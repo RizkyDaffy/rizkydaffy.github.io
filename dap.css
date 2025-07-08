@@ -1,0 +1,161 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #FFFCFB;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar Styling */
+.custom-navbar {
+  background-color: #3585E7;
+  border-radius: 50px;
+  color: #FFFCFB;
+  max-width: 300px;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  flex-direction: row; /* horizontal untuk mobile */
+}
+
+/* Desktop - Expand menu + width */
+@media (min-width: 768px) {
+  .custom-navbar {
+    max-width: 700px;
+  }
+}
+
+.nav-link {
+  color: #FFFCFB !important;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+
+/*SECTION 2*/
+.hero-section h1, 
+.hero-section h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #000;
+}
+
+.hero-section p {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.hero-img {
+  max-width: 100%;
+  width: 280px;
+  border-radius: 20px;
+}
+
+/* Desktop View: Atur ukuran max dan posisi */
+@media (min-width: 768px) {
+  .hero-section {
+    padding: 0 30px;
+  }
+
+  .hero-img {
+    float: right;
+    width: 300px;
+  }
+}
+
+.about-section {
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.about-img {
+  max-width: 100%;
+  width: 280px;
+  border-radius: 20px;
+}
+
+.about-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+.skills-checklist h3 {
+  font-size: 1.5rem;
+}
+
+.skills-checklist ul {
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.skills-checklist li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  display: flex;
+  align-items: start;
+}
+
+.check-icon {
+  background-color: #3585E7;
+  color: white;
+  border-radius: 5px;
+  padding: 3px 6px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+/* Divider mouse icon */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-icon {
+  width: 24px;
+  opacity: 0.7;
+}
+
+.clients-section h2,
+.clients-section h4 {
+  color: #000;
+}
+
+.client-logo {
+  width: 170px;
+  height: auto;
+  padding: 10px;
+  background-color: #3585E7;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.client-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Footer Styling */
+.footer-section {
+  background-color: #3585E7;
+  color: white;
+}
+
+.footer-section h5 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-section ion-icon {
+  margin-right: 6px;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+.footer-section ul li {
+  margin-bottom: 6px;
+}
