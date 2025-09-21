@@ -1,240 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rizky Daffy | Fullstack Developers</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="dap.css" />
-</head>
-
-<body>
-
-  <div class="container d-flex justify-content-center mt-4">
-    <nav class="d-flex align-items-center justify-content-center gap-3 px-4 py-3 custom-navbar flex-wrap">
-      <a href="#main-section" class="nav-link">Home</a>
-      <a href="#about-section" class="nav-link">about</a>
-      <a href="#skills-section
-" class="nav-link">skills</a>
-
-      <!-- Menu tambahan hanya muncul di desktop -->
-      <a href="#proj-section" class="nav-link d-none d-md-inline">projects</a>
-      <a href="https://github.com/RizkyDaffy" class="nav-link d-none d-md-inline">Contact</a>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rizky Daffy | Fullstack Developers</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+    
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#333333",
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#121212",
+                        "text-light": "#1F2937",
+                        "text-dark": "#E5E7EB",
+                        "secondary-text-light": "#6B7280",
+                        "secondary-text-dark": "#9CA3AF",
+                        "border-light": "#E5E7EB",
+                        "border-dark": "#374151"
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .text-gradient {
+            background: linear-gradient(90deg, #4F46E5, #D946EF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+		nav {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+<header class="flex justify-center mb-12">
+<nav class="bg-slate-800/30 backdrop-blur-xl fixed top-4 z-10 rounded-full px-4 py-2">
+        <ul class="flex items-center space-x-6 text-sm font-medium text-white">
+            <li><a class="hover:text-gray-300 transition-colors" href="#">Home</a></li>
+            <li><a class="hover:text-gray-300 transition-colors" href="#about">About</a></li>
+            <li><a class="hover:text-gray-300 transition-colors" href="#skills">Skills</a></li>
+            <li><a class="hover:text-gray-300 transition-colors" href="#projects">Project</a></li>
+            <li><a class="hover:text-gray-300 transition-colors" href="#contact">Contact</a></li>
+        </ul>
     </nav>
-  </div>
+</header>
+<main>
+<section class="flex flex-col md:flex-row items-center justify-between gap-8 mb-24" id="home">
+<div class="md:w-1/2 text-center md:text-left">
+<h1 class="text-4xl md:text-5xl font-bold mb-2">Hi there, its me dave</h1>
+<h2 class="text-4xl md:text-5xl font-bold mb-4">i'ma <b class="italic">Fullstack</b> Developers</h2>
+<p class="text-secondary-text-light dark:text-secondary-text-dark mb-6">nonchalant 6’7, asian fine shyt
+who loves codings</p>
+<a class="inline-block bg-primary text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-opacity-80 transition-all" href="#contact">
+                        View Resume
+                    </a>
+</div>
+<div class="md:w-1/2 flex justify-center">
+<img alt="A photo of Dave wearing a high school uniform" class="rounded-lg shadow-2xl w-64 h-80 object-cover" src="./cdn/gweh.jpg"/>
+</div>
+</section>
+<section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-24" id="about">
+<div class="md:w-1/2 flex justify-center">
+<img alt="Dave sitting with a friend, both wearing hats" class="rounded-lg shadow-xl w-full max-w-sm object-cover" src="./cdn/tentang.jpg"/>
+</div>
+<div class="md:w-1/2">
+<h3 class="text-3xl font-bold mb-4">Who's Dave?</h3>
+<p class="text-secondary-text-light dark:text-secondary-text-dark leading-relaxed mb-6 text-justify">
+                        I’m Dave A Fullstack Developer and experienced leader with a strong commitment to delivering innovative, high-quality solutions. My expertise includes front-end and back-end web development, UI/UX design, networking, and cybersecurity. I have a proven track record in leading and developing projects, and I always strive to achieve higher levels of success on KlyroSoft and other projects.  </p>
+<div id="skills">
+<h4 class="text-xl font-semibold mb-3">My Skills Checklist</h4>
+<ul class="space-y-2 text-secondary-text-light dark:text-secondary-text-dark">
+<li class="flex items-center">
+<span class="w-4 h-4 rounded bg-gray-400 dark:bg-gray-600 mr-3"></span> I cracked the top 20 of the National Network Olympiad.
+                            </li>
+<li class="flex items-center">
+<span class="w-4 h-4 rounded bg-gray-400 dark:bg-gray-600 mr-3"></span> Build an intuitive app by playing with backend
+                            </li>
+<li class="flex items-center">
+<span class="w-4 h-4 rounded bg-gray-400 dark:bg-gray-600 mr-3"></span>got my certs for cybersec: CEH, CySA+, Security+
+                            </li>
+<li class="flex items-center">
+<span class="w-4 h-4 rounded bg-gray-400 dark:bg-gray-600 mr-3"></span> on frontend I craft distinctive ui/ux
+                            </li>
+</ul>
+</div>
+</div>
+</section>
+<section class="mb-24" id="projects">
+<h3 class="text-3xl font-bold mb-8 text-center">What kind of feats have I pulled off?</h3>
+<div class="space-y-8">
+<div class="bg-background-light dark:bg-gray-800/20 p-6 rounded-lg border border-border-light dark:border-border-dark">
+<div class="flex justify-between items-start mb-2">
+<h4 class="text-xl font-semibold">Mikrotik (CitraWeb) 2024 Nationals Network Olympiads</h4>
+<span class="text-sm text-secondary-text-light dark:text-secondary-text-dark">August, 2024</span>
+</div>
+<p class="text-secondary-text-light dark:text-secondary-text-dark">Out of everyone who competed, I'm proud that I cracked the top 20, finishing in 20th place overall.</p>
+</div>
+<div class="bg-background-light dark:bg-gray-800/20 p-6 rounded-lg border border-border-light dark:border-border-dark">
+<div class="flex justify-between items-start mb-2">
+<h4 class="text-xl font-semibold">CyberSecurity (LKS) 2025 Province Competitions</h4>
+<span class="text-sm text-secondary-text-light dark:text-secondary-text-dark">idk but in 2025</span>
+</div>
+<p class="text-secondary-text-light dark:text-secondary-text-dark">I just finished the CyberSecurity (LKS) 2025 Province Competitions, and I'm pretty stoked that I was able to be the part of the competitions.</p>
+</div>
+<div class="bg-background-light dark:bg-gray-800/20 p-6 rounded-lg border border-border-light dark:border-border-dark">
+<div class="flex justify-between items-start mb-2">
+<h4 class="text-xl font-semibold">I pwned (Gelora) my school's server</h4>
+<span class="text-sm text-secondary-text-light dark:text-secondary-text-dark">remadhan, 2025</span>
+</div>
+<p class="text-secondary-text-light dark:text-secondary-text-dark">it was my best experience i’ve been felt in my intire life
+be able to steal and give the exams question to the huzz
+and can controlled thier overall systems.</p>
+</div>
+</div>
+</section>
+<section class="mb-24" id="experience">
+<h3 class="text-3xl font-bold mb-8 text-center">What I've done</h3>
+<div class="space-y-8">
+<div class="bg-background-light dark:bg-gray-800/20 p-6 rounded-lg border border-border-light dark:border-border-dark">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="text-xl font-semibold">KlyroSoft Technology Indonesia</h4>
+<p class="text-sm text-secondary-text-light dark:text-secondary-text-dark"><b>I'MMA Founder, Bitch. (Owner)</b> — Dec 2023 - Present</p>
+</div>
+<span class="text-sm font-medium">KlyroSoft</span>
+</div>
+<p class="text-secondary-text-light dark:text-secondary-text-dark">Make this Company when i’m 15th, it’s my  biggest dream, plan and projects i’ve ever build, Join now at klyrosoft.my.id/jobs</p>
+</div>
+<div class="bg-background-light dark:bg-gray-800/20 p-6 rounded-lg border border-border-light dark:border-border-dark">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="text-xl font-semibold">Student Council Members (Osis)</h4>
+<p class="text-sm text-secondary-text-light dark:text-secondary-text-dark"> Part of PE department. — since 2024 - Jan 2025 (got kick out)</p>
+</div>
+<span class="text-sm font-medium">OSIS Gelora</span>
+</div>
+<p class="text-secondary-text-light dark:text-secondary-text-dark">I was on the PE squad. I got voted in for '24, but they kicked me out by Jan '25.
+remeber the time i hack my entire school? that’s the reason </p>
+</div>
+<div class="bg-background-light dark:bg-gray-800/20 p-6 rounded-lg border border-border-light dark:border-border-dark">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="text-xl font-semibold">MetaMorfosa</h4>
+<p class="text-sm text-secondary-text-light dark:text-secondary-text-dark">I'm The Camera Guy. Feb 2023 - 2024</p>
+</div>
+<span class="text-sm font-medium">MetaMorfosa</span>
+</div>
+<p class="text-secondary-text-light dark:text-secondary-text-dark">Metamorfosa? Oh, that was this little project from back in middle school for us nerd folks. It was pretty much just a crew of us geeks that'd get a picture every time the school had a events.</p>
+</div>
+</div>
+</section>
+<section class="text-center mb-12" id="contact">
+<h3 class="text-3xl font-bold mb-4">Get in touch</h3>
+<p class="text-secondary-text-light dark:text-secondary-text-dark max-w-2xl mx-auto mb-8">
+                    I'm currently looking for new journey. Whether you have a question or want to know me, hit that button
+                </p>
+<form class="max-w-xl mx-auto flex items-center gap-2">
+<input class="w-full bg-gray-100 dark:bg-gray-800 border-border-light dark:border-border-dark rounded-lg py-3 px-4 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition" placeholder="Senda a letters (WhatsApp only)" type="text"/>
+<button class="bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-opacity-80 transition-all" type="submit">
+                        Send
+                    </button>
+</form>
+</section>
+</main>
+<footer class="border-t border-border-light dark:border-border-dark pt-8 flex justify-between items-center">
+<p class="text-sm text-secondary-text-light dark:text-secondary-text-dark">Rizky Daffy Al Fajr</p>
+<div class="flex space-x-4">
+<a class="text-secondary-text-light dark:text-secondary-text-dark hover:text-text-light dark:hover:text-text-dark transition" href="#">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="text-secondary-text-light dark:text-secondary-text-dark hover:text-text-light dark:hover:text-text-dark transition" href="#">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+</a>
+<a class="text-secondary-text-light dark:text-secondary-text-dark hover:text-text-light dark:hover:text-text-dark transition" href="#">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12.019c0 4.434 2.757 8.19 6.538 9.574.498.092.682-.216.682-.48 0-.236-.008-.864-.013-1.695-2.676.58-3.24-1.287-3.24-1.287-.452-1.15-1.104-1.456-1.104-1.456-.903-.618.068-.606.068-.606 1.003.07 1.53 1.03 1.53 1.03.89 1.527 2.336 1.086 2.906.83.09-.645.35-1.086.634-1.335-2.217-.252-4.545-1.108-4.545-4.93 0-1.088.39-1.979 1.03-2.675-.104-.253-.447-1.266.097-2.637 0 0 .838-.268 2.748 1.023A9.63 9.63 0 0112 6.82c.85.004 1.705.114 2.504.336 1.91-1.291 2.744-1.023 2.744-1.023.545 1.371.202 2.384.1 2.637.64.696 1.026 1.587 1.026 2.675 0 3.832-2.332 4.674-4.555 4.922.358.308.678.918.678 1.85 0 1.335-.012 2.413-.012 2.74 0 .267.18.577.688.479C19.243 20.209 22 16.453 22 12.019 22 6.477 17.523 2 12 2z" fill-rule="evenodd"></path></svg>
+</a>
+</div>
+</footer>
+</div>
 
-
-  <!-- Hero Section -->
-  <section class="hero-section container mt-5">
-    <div id="main-section" class="row align-items-center">
-
-      <!-- Text Area -->
-      <div class="col-12 col-md-6 text-center text-md-start">
-        <h1 class="fw-bold">Hi there, it’s me dave</h1>
-        <h2 class="fw-bold">i’ma <span class="text-primary" id="myText">Fullstack</span> <span
-            id="details">Developers</span></h2>
-        <p class="text-secondary">nonchalant, asian fine shyt<br>who loves codings</p>
-        <a href="#" class="btn btn-primary rounded-pill mt-3 px-4">My Resume</a>
-      </div>
-
-      <!-- Image Area -->
-      <div class="col-12 col-md-6 text-center mt-4 mt-md-0">
-        <img src="./cdn/gweh.jpg" alt="dave-profile" class="img-fluid hero-img" />
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Divider -->
-  <div class="divider text-center my-5">
-    <hr class="flex-grow-1 d-inline-block" style="width: 25%;" />
-    <img src="https://cdn-icons-png.flaticon.com/512/10406/10406731.png" alt="scroll" class="scroll-icon mx-3"
-      width="24" />
-    <hr class="flex-grow-1 d-inline-block" style="width: 25%;" />
-  </div>
-
-  <!-- About Section -->
-  <section class="about-section container">
-    <div id="about-section"
-      class="row d-flex align-items-center justify-content-between flex-column-reverse flex-md-row">
-
-      <!-- Image Left -->
-      <div class="col-md-5 text-center text-md-start mb-4 mb-md-0">
-        <img src="./cdn/tentang.jpg" alt="about-me-photo" class="img-fluid rounded-4 about-img" />
-      </div>
-
-      <!-- Text + Checklist -->
-      <div class="col-md-7">
-        <h2 class="fw-bold text-center text-md-start mb-3">Who’s Dave?</h2>
-        <p class="about-text">
-          I’m <strong>Dave</strong> A <strong>Fullstack Developer</strong> and experienced leader with a strong
-          commitment to delivering innovative, high-quality solutions.
-          My expertise includes <strong>front-end</strong> and <strong>back-end web development</strong>, <strong>UI/UX
-            design</strong>, <strong>networking</strong>, and <strong>cybersecurity</strong>.
-          I have a proven track record in leading and developing projects, and I always strive to achieve higher levels
-          of success on KlyroSoft and other projects.
-        </p>
-
-        <!-- Checklist -->
-        <div id="skills-section" class="skills-checklist mt-4">
-          <h3 class="fw-bold text-center text-md-start">My <span class="text-primary">Skills</span> checklist</h3>
-          <ul class="list-unstyled mt-3">
-            <li><span class="check-icon"><ion-icon name="checkbox"></ion-icon></span> <strong>Frontend:</strong> I craft
-              distinctive UI/UX</li>
-            <li><span class="check-icon"><ion-icon name="checkbox"></ion-icon></span> There’s nothing better than
-              <strong>Backend</strong></li>
-            <li><span class="check-icon"><ion-icon name="checkbox"></ion-icon></span> Certified <strong>CEH, CYSA+,
-                Security+</strong></li>
-            <li><span class="check-icon"><ion-icon name="checkbox"></ion-icon></span> I placed 20th in the
-              <strong>National Network Olympiad</strong></li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- xperimental -->
-  <!-- Projects Section -->
-  <section id="proj-section" class="projects-section container mt-5">
-    <h2 class="fw-bold text-center mb-4">All Projects</h2>
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-
-      <!-- Project Card -->
-      <div class="col">
-        <div class="project-card p-3 rounded-4 h-100 shadow-sm">
-          <img src="./cdn/ingat.jpg" alt="Reminder Tugas" class="img-fluid rounded mb-3" />
-          <h5 class="fw-semibold mb-1">Reminder Tugas</h5>
-          <p class="mb-1"><strong>Github:</strong> Reminder-Tugas</p>
-          <p class="text-secondary small">Together it's easier! Task Reminder is a social platform for organizing tasks
-            and sharing motivation. Create a study group, team project, or community of shared interests.</p>
-        </div>
-      </div>
-
-      <!-- Project Card -->
-      <div class="col">
-        <div class="project-card p-3 rounded-4 h-100 shadow-sm">
-          <img src="./cdn/crud.jpg" alt="Survey App" class="img-fluid rounded mb-3" />
-          <h5 class="fw-semibold mb-1">CRUD Survey Apps</h5>
-          <p class="mb-1"><strong>Github:</strong> Survey-Apps</p>
-          <p class="text-secondary small">Survey App is the quickest and easiest way to create engaging surveys, quizzes
-            or polls. Get the valuable data you need, anytime and anywhere.</p>
-        </div>
-      </div>
-
-      <!-- Project Card -->
-      <div class="col">
-        <div class="project-card p-3 rounded-4 h-100 shadow-sm">
-          <img src="./cdn/hunt.png" alt="Survey App" class="img-fluid rounded mb-3" />
-          <h5 class="fw-semibold mb-1">SyntaxHunt</h5>
-          <p class="mb-1"><strong>Website:</strong> syntaxhunt.my.id</p>
-          <p class="text-secondary small">SyntaxHunt is a vibrant platform for developers and tech enthusiasts to
-            showcase their skills, solve real-world coding challenges, and earn rewards.</p>
-        </div>
-      </div>
-
-      <!-- Project Card -->
-      <div class="col">
-        <div class="project-card p-3 rounded-4 h-100 shadow-sm">
-          <img src="./cdn/yt.jpg" alt="Survey App" class="img-fluid rounded mb-3" />
-          <h5 class="fw-semibold mb-1">Better Youtube Music</h5>
-          <p class="mb-1"><strong>Github:</strong> Better-YT-Music</p>
-          <p class="text-secondary small">Better Youtube Music is a theme design for the YouTube music website which is
-            made similar to the Apple Music user interface</p>
-        </div>
-      </div>
-
-
-      <!-- Project Card -->
-      <div class="col">
-        <div class="project-card p-3 rounded-4 h-100 shadow-sm">
-          <img src="./cdn/demos.png" alt="Survey App" class="img-fluid rounded mb-3" />
-          <h5 class="fw-semibold mb-1">Semaphoreify (converter)</h5>
-          <p class="mb-1"><strong>Github:</strong> Semaphoreify</p>
-          <p class="text-secondary small">Semaphoreify is a mobile app that converts text into numbers using semaphore
-            code. Semaphore code is a visual communication system that uses flags to represent letters and numbers.</p>
-        </div>
-      </div>
-
-      <!-- Project Card -->
-      <div class="col">
-        <div class="project-card p-3 rounded-4 h-100 shadow-sm">
-          <img src="./cdn/obe.jpg" alt="Survey App" class="img-fluid rounded mb-3" />
-          <h5 class="fw-semibold mb-1">Obesity Detectors</h5>
-          <p class="mb-1"><strong>Github:</strong> Obesity-Detectors</p>
-          <p class="text-secondary small">introduce your weight detection application and make sure it is 100% accurate
-            The core of the development idea in this application is a BMI calculator This Project Created By DappyNet
-            Development.</p>
-        </div>
-      </div>
-      <!-- Tambahkan lebih banyak <div class="col">...</div> untuk project lainnya -->
-
-    </div>
-
-    <div class="text-center mt-4">
-      <a href="https://github.com/RizkyDaffy" class="btn btn-outline-primary rounded-pill px-4">see all projects</a>
-    </div>
-  </section>
-
-
-  <!-- Clients Section -->
-  <section class="clients-section text-center container my-5">
-    <h2 class="fw-semibold">My Clients</h2>
-    <h4 class="fw-bold mb-3">Trusted by 3 completed clients.</h4>
-    <p class="text-secondary mb-4">
-      Client needs are always my primary concern; I am determined to <br class="d-none d-md-block">
-      exceed their expectations in service.
-    </p>
-
-    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-4">
-      <img src="./cdn/ctf.png" alt="CTFLabs ID" class="client-logo rounded-3" />
-      <img src="./cdn/syntax.png" alt="Syntax" class="client-logo rounded-3" />
-      <img src="./cdn/acad.png" alt="Gelora Academy" class="client-logo rounded-3" />
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer-section py-5 mt-5 text-white">
-    <div class="container">
-      <div class="row gy-4">
-
-        <div class="col-md-4 text-center text-md-start">
-          <h5 class="fw-bold">Rizky Daffy Al-Fajr</h5>
-          <p class="mb-0">
-            I’m <strong>Dave</strong> A Fullstack Developer and experienced leader with a strong
-            commitment to delivering innovative,
-          </p>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h5 class="fw-bold">Social Media</h5>
-          <ul class="list-unstyled mb-0">
-            <li><ion-icon name="logo-github"></ion-icon> Github</li>
-            <li><ion-icon name="logo-twitter"></ion-icon> Twitter</li>
-            <li><ion-icon name="logo-linkedin"></ion-icon> Linkedin</li>
-          </ul>
-        </div>
-
-        <div class="col-md-4 text-center text-md-end">
-          <h5 class="fw-bold">Address</h5>
-          <p class="mb-0">Bekasi, Jawa Barat, Indonesia</p>
-          <p class="mb-0">daproot0@gmail.com</p>
-        </div>
-
-      </div>
-
-      <hr class="my-4 text-white">
-      <p class="text-center mb-0 small">Copyright ©2024 | Rizky Daffy Al-Fajr, All Right Reversed</p>
-    </div>
-  </footer>
-
-
-
-  <script src="script.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
-
-</html>
+</body></html>
