@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Rizky Terminal</title>
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Space+Grotesk:wght@400;500;700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#141414",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#191919",
+                        "text-light": "#1a1a1a",
+                        "text-dark": "#f0f0f0"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <style>
+        body {
+            min-height: max(705px, 100dvh);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        /* Custom scrollbar for command history */
+        #command-history {
+            max-height: calc(100vh - 250px);
+            overflow-y: auto;
+        }
+        #command-history::-webkit-scrollbar {
+            width: 8px;
+        }
+        #command-history::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .dark #command-history::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        #command-history::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+        .dark #command-history::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        #command-history::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .dark #command-history::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        /* Blinking cursor effect */
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2em;
+            background-color: #10b981;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        /* Command output styling */
+        .command-output {
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            white-space: pre-wrap;
+            font-family: monospace;
+            line-height: 1.4;
+        }
+        .command-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .command-prompt {
+            color: #10b981;
+            margin-right: 0.5rem;
+            font-family: monospace;
+        }
+        .dark .command-prompt {
+            color: #10b981;
+        }
+        .light .command-prompt {
+            color: #059669;
+        }
+        /* Table styling for profile */
+        .profile-table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+        }
+        .profile-table td {
+            padding: 4px 8px;
+            vertical-align: top;
+        }
+        .profile-table td:first-child {
+            font-weight: bold;
+            width: 120px;
+            color: #3b82f6;
+        }
+        .dark .profile-table td:first-child {
+            color: #60a5fa;
+        }
+        /* List styling */
+        .command-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .command-list li {
+            margin-bottom: 8px;
+            display: flex;
+        }
+        .command-list .command-name {
+            width: 100px;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        .dark .command-list .command-name {
+            color: #60a5fa;
+        }
+        .light .command-list .command-name {
+            color: #2563eb;
+        }
+        /* Project list styling */
+        .project-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .project-list li {
+            margin-bottom: 12px;
+        }
+        .project-title {
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        .dark .project-title {
+            color: #60a5fa;
+        }
+        .light .project-title {
+            color: #2563eb;
+        }
+        .project-desc {
+            margin-left: 20px;
+            color: #6b7280;
+        }
+        .dark .project-desc {
+            color: #d1d5db;
+        }
+        /* Certification list styling */
+        .cert-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .cert-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .cert-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+        }
+        /* Skills grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 8px;
+        }
+        .skill-category {
+            margin-bottom: 12px;
+        }
+        .skill-title {
+            font-weight: bold;
+            color: #3b82f6;
+            margin-bottom: 4px;
+        }
+        .dark .skill-title {
+            color: #60a5fa;
+        }
+        .light .skill-title {
+            color: #2563eb;
+        }
+        .skill-items {
+            color: #6b7280;
+        }
+        .dark .skill-items {
+            color: #d1d5db;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+    <div class="flex flex-col min-h-screen">
+        <header class="bg-primary/80 dark:bg-primary/50 text-white backdrop-blur-sm sticky top-0 z-10 px-4 py-2">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                    <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                    <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                </div>
+                <div class="text-center">
+                    <p class="text-sm">Rizky@portfolio</p>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined text-lg">
+                        more_vert
+                    </span>
+                </div>
+            </div>
+        </header>
+        <main class="flex-grow p-4 flex flex-col text-sm sm:text-base">
+            <pre class="text-green-400 dark:text-green-300 whitespace-pre-wrap mb-4">   
+8888888b.  d8b          888                    8888888b.            .d888  .d888          
+888   Y88b Y8P          888                    888  "Y88b          d88P"  d88P"           
+888    888              888                    888    888          888    888             
+888   d88P 888 88888888 888  888 888  888      888    888  8888b.  888888 888888 888  888 
+8888888P"  888    d88P  888 .88P 888  888      888    888     "88b 888    888    888  888 
+888 T88b   888   d88P   888888K  888  888      888    888 .d888888 888    888    888  888 
+888  T88b  888  d88P    888 "88b Y88b 888      888  .d88P 888  888 888    888    Y88b 888 
+888   T88b 888 88888888 888  888  "Y88888      8888888P"  "Y888888 888    888     "Y88888 
+                                      888                                             888 
+                                 Y8b d88P                                        Y8b d88P 
+                                  "Y88P"                                          "Y88P"  
+      </pre>
+            <div class="text-text-light dark:text-text-dark">
+                <p>Welcome to my interactive portfolio.</p>
+                <p>Type <span class="text-cyan-400 dark:text-cyan-300">'help'</span> to see a list of available commands.</p>
+            </div>
+            <div class="mt-4 space-y-2" id="command-history">
+                <!-- Command history  -->
+            </div>
+            <div class="mt-auto flex items-center">
+                <span class="command-prompt">rizky@portfolio:~$</span>
+                <div class="flex-grow flex items-center">
+                    <input autofocus class="flex-grow bg-transparent border-none text-text-light dark:text-text-dark focus:ring-0 p-0" id="command-input" type="text"/>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const commandInput = document.getElementById('command-input');
+            const commandHistory = document.getElementById('command-history');
+            const cursor = document.querySelector('.cursor');
+            
+            // Focus on input when clicking anywhere on the page
+            document.addEventListener('click', function() {
+                commandInput.focus();
+            });
+            
+            // Command definitions
+            const commands = {
+                help: {
+                    description: 'Show list of available commands',
+                    execute: function() {
+                        return `
+<ul class="command-list">
+    <li><span class="command-name">help</span> - Show this help message</li>
+    <li><span class="command-name">profile</span> - Display profile information</li>
+    <li><span class="command-name">certs</span> - Show certifications</li>
+    <li><span class="command-name">skills</span> - List technical skills</li>
+    <li><span class="command-name">projects</span> - Show portfolio projects</li>
+    <li><span class="command-name">contact</span> - Display contact information</li>
+    <li><span class="command-name">clear</span> - Clear the terminal</li>
+    <li><span class="command-name">theme</span> - Toggle between light/dark mode</li>
+</ul>
+                        `.trim();
+                    }
+                },
+                profile: {
+                    description: 'Display profile information',
+                    execute: function() {
+                        return `
+<table class="profile-table">
+    <tr><td>Name:</td><td>Alex Chen</td></tr>
+    <tr><td>Profession:</td><td>Software Engineer</td></tr>
+    <tr><td>Location:</td><td>San Francisco, CA</td></tr>
+    <tr><td>Email:</td><td>alex.chen@example.com</td></tr>
+    <tr><td>LinkedIn:</td><td>linkedin.com/in/alexchen</td></tr>
+    <tr><td>GitHub:</td><td>github.com/alexchen</td></tr>
+    <tr><td>Summary:</td><td>Experienced software engineer specializing in web development and cloud technologies. Passionate about building scalable and efficient applications.</td></tr>
+</table>
+                        `.trim();
+                    }
+                },
+                certs: {
+                    description: 'Show certifications',
+                    execute: function() {
+                        return `
+<h3 class="text-lg font-bold mb-2">Certifications:</h3>
+<ul class="cert-list">
+    <li>Google Cybersecurity Certified</li>
+    <li>IBM Cybersecurity Analyst</li>
+    <li>IBM Cybersecurity: CompTIA Security+ & CYSA+</li>
+    <li>Mikrotik (CitraWeb) 2024 Nationals Network Olympiads</li>
+	<li>CyberSecurity (LKS) 2025 Province Competitions</li>
+	
+</ul>
+                        `.trim();
+                    }
+                },
+                skills: {
+                    description: 'List technical skills',
+                    execute: function() {
+                        return `
+<h3 class="text-lg font-bold mb-2">Technical Skills:</h3>
+<div class="skills-grid">
+    <div class="skill-category">
+        <div class="skill-title">Frontend</div>
+        <div class="skill-items">React, Vue.js, TypeScript, HTML5, CSS3, Tailwind CSS</div>
+    </div>
+    <div class="skill-category">
+        <div class="skill-title">Backend</div>
+        <div class="skill-items">Node.js, Python, Java, Express.js, Django, Spring Boot</div>
+    </div>
+    <div class="skill-category">
+        <div class="skill-title">Databases</div>
+        <div class="skill-items">MongoDB, PostgreSQL, MySQL, Redis</div>
+    </div>
+    <div class="skill-category">
+        <div class="skill-title">Cloud/DevOps</div>
+        <div class="skill-items">AWS, Docker, Kubernetes, CI/CD, Terraform</div>
+    </div>
+    <div class="skill-category">
+        <div class="skill-title">Tools</div>
+        <div class="skill-items">Git, Webpack, Jest, Postman, Figma</div>
+    </div>
+</div>
+                        `.trim();
+                    }
+                },
+                projects: {
+                    description: 'Show portfolio projects',
+                    execute: function() {
+                        return `
+<h3 class="text-lg font-bold mb-2">Featured Projects:</h3>
+<ul class="project-list">
+    <li>
+        <div class="project-title">1. KlyroSoft</div>
+        <div class="project-desc">SyntaxHunt is a vibrant platform for developers and tech enthusiasts to showcase their skills, <br>solve real-world coding challenges, and earn rewards. start your journey bisakode.my.id/start</div>
+    </li>
+    <li>
+        <div class="project-title">2. CRUD Survey Apps</div>
+        <div class="project-desc">Survey App is the quickest and easiest way to create engaging surveys, quizzes or polls. <br>Get the valuable data you need, anytime and anywhere.</div>
+    </li>
+    <li>
+        <div class="project-title">3. Anti-Scam AI Bots (WhatsApp)</div>
+        <div class="project-desc">i build high level of ai security to save your entire digital information and activition from fake webs and scamm page, try now at garda.fun/tryit </div>
+    </li>
+    <li>
+        <div class="project-title">4. Warna ui - components</div>
+        <div class="project-desc">open source components for next.js and react.js, share your work to the community, wanna see it? warnaui.my.id/components </div>
+    </li>
+</ul>
+                        `.trim();
+                    }
+                },
+                contact: {
+                    description: 'Display contact information',
+                    execute: function() {
+                        return `
+<h3 class="text-lg font-bold mb-2">Contact Information:</h3>
+<table class="profile-table">
+    <tr><td>Email:</td><td>dave@klyrosoft.my.id</td></tr>
+    <tr><td>LinkedIn:</td><td>linkedin.com/in/rizkydaffy</td></tr>
+    <tr><td>GitHub:</td><td>github.com/rizkydaffy</td></tr>
+    <tr><td>Twitter:</td><td>twitter.com/rizkydaffy</td></tr>
+</table>
+                        `.trim();
+                    }
+                },
+                clear: {
+                    description: 'Clear the terminal',
+                    execute: function() {
+                        commandHistory.innerHTML = '';
+                        return '';
+                    }
+                },
+                theme: {
+                    description: 'Toggle between light/dark mode',
+                    execute: function() {
+                        const html = document.querySelector('html');
+                        const body = document.querySelector('body');
+                        if (html.classList.contains('dark')) {
+                            html.classList.remove('dark');
+                            body.classList.add('light');
+                            return 'Switched to light mode';
+                        } else {
+                            html.classList.add('dark');
+                            body.classList.remove('light');
+                            return 'Switched to dark mode';
+                        }
+                    }
+                }
+            };
+            
+            // Handle command execution
+            function executeCommand(cmd) {
+                const commandLine = document.createElement('div');
+                commandLine.className = 'command-line';
+                
+                const prompt = document.createElement('span');
+                prompt.className = 'command-prompt';
+                prompt.textContent = 'rizky@portfolio:~$';
+                
+                const commandText = document.createElement('span');
+                commandText.textContent = ' ' + cmd;
+                commandText.classList.add('text-text-light', 'dark:text-text-dark');
+                
+                commandLine.appendChild(prompt);
+                commandLine.appendChild(commandText);
+                commandHistory.appendChild(commandLine);
+                
+                // Process command
+                const output = document.createElement('div');
+                output.className = 'command-output text-text-light dark:text-text-dark';
+                
+                if (cmd.trim() === '') {
+                    // Empty command, do nothing
+                    commandHistory.removeChild(commandLine);
+                    return;
+                }
+                
+                const cmdName = cmd.trim().toLowerCase();
+                
+                if (commands[cmdName]) {
+                    const result = commands[cmdName].execute();
+                    if (result) {
+                        output.innerHTML = result;
+                    }
+                } else {
+                    output.textContent = `Command not found: ${cmdName}. Type 'help' to see available commands.`;
+                    output.className += ' text-red-500';
+                }
+                
+                if (output.innerHTML) {
+                    commandHistory.appendChild(output);
+                }
+                
+                // Scroll to bottom
+                commandHistory.scrollTop = commandHistory.scrollHeight;
+            }
+            
+            // Handle input events
+            commandInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    const command = commandInput.value;
+                    executeCommand(command);
+                    commandInput.value = '';
+                    
+                    // Prevent form submission if any
+                    e.preventDefault();
+                }
+            });
+            
+            // Hide cursor when input is not focused
+            commandInput.addEventListener('blur', function() {
+                cursor.style.display = 'none';
+            });
+            
+            commandInput.addEventListener('focus', function() {
+                cursor.style.display = 'inline-block';
+            });
+            
+            // Initial focus
+            commandInput.focus();
+        });
+    </script>
+</body>
+</html>
